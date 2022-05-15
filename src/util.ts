@@ -32,5 +32,5 @@ export function deprecate(
 
   console.warn(`[WARN] ${method} is deprecated${useOther}`)
   if (line) console.warn(pad, line)
-  if (see) console.warn(pad, `See ${see}`)
+  if (see) console.warn(pad, `SEE ${see}`)
 }

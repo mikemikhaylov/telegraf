@@ -174,11 +174,11 @@ const replyContext: ReplyContext = {
 
 /**
  * Sets up Context to use the new reply methods.
- * ctx.reply() and ctx.replyWith*() methods will actually reply to the message they are replying to.
+ * `ctx.reply()` and `ctx.replyWith*()` methods will actually reply to the message they are replying to.
  * Use ctx.respond() to send a message in chat without replying to it.
  *
- * If the message to reply is deleted, reply() will send a normal message.
- * If the update is not a message and we are unable to reply, reply() will send a normal message.
+ * If the message to reply is deleted, `reply()` will send a normal message.
+ * If the update is not a message and we are unable to reply, `reply()` will send a normal message.
  */
 export function useNewReplies<C extends Context>(): Middleware<C> {
   return (ctx, next) => {
