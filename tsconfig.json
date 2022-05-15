@@ -21,7 +21,7 @@
     "media": "docs/assets/",
     "name": "telegraf.js",
     "out": "docs/build/",
-    "readme": "README.md",
+    "readme": "README.md"
   },
-  "include": ["src/"]
+  "include": ["src/**/*.ts"]
 }

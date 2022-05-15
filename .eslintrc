@@ -25,7 +25,14 @@
     "@typescript-eslint/no-empty-interface": "off",
     "@typescript-eslint/strict-boolean-expressions": "off"
   },
-  "ignorePatterns": ["/lib/", "/typings/", "/docs/", "/test/", "/types.*"],
+  "ignorePatterns": [
+    "/lib/",
+    "/typings/",
+    "/docs/",
+    "/test/",
+    "/types.*",
+    "/future.*"
+  ],
   "reportUnusedDisableDirectives": true,
   "plugins": ["ava"]
 }
