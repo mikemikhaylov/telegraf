@@ -19,7 +19,7 @@ export function newReplies<C extends Context>(): Middleware<C> {
 
     ctx.reply = function reply(text, extra) {
       assert(ctx, 'chat', 'reply')
-      return ctx.respond(text, makeReply(extra))
+      return ctx.telegram.sendMessage(ctx.chat.id, text, makeReply(extra))
     }
 
     ctx.replyWithAnimation = function replyWithAnimation(animation, extra) {
