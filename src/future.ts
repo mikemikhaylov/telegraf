@@ -182,7 +182,28 @@ const replyContext: ReplyContext = {
  */
 export function useNewReplies<C extends Context>(): Middleware<C> {
   return (ctx, next) => {
-    Object.assign(ctx, replyContext)
+    ctx.reply = replyContext.reply
+    ctx.replyWithPhoto = replyContext.replyWithPhoto
+    ctx.replyWithMediaGroup = replyContext.replyWithMediaGroup
+    ctx.replyWithAudio = replyContext.replyWithAudio
+    ctx.replyWithDice = replyContext.replyWithDice
+    ctx.replyWithDocument = replyContext.replyWithDocument
+    ctx.replyWithSticker = replyContext.replyWithSticker
+    ctx.replyWithVideo = replyContext.replyWithVideo
+    ctx.replyWithAnimation = replyContext.replyWithAnimation
+    ctx.replyWithVideoNote = replyContext.replyWithVideoNote
+    ctx.replyWithInvoice = replyContext.replyWithInvoice
+    ctx.replyWithGame = replyContext.replyWithGame
+    ctx.replyWithVoice = replyContext.replyWithVoice
+    ctx.replyWithPoll = replyContext.replyWithPoll
+    ctx.replyWithQuiz = replyContext.replyWithQuiz
+    ctx.replyWithChatAction = replyContext.replyWithChatAction
+    ctx.replyWithLocation = replyContext.replyWithLocation
+    ctx.replyWithVenue = replyContext.replyWithVenue
+    ctx.replyWithContact = replyContext.replyWithContact
+    ctx.replyWithMarkdown = replyContext.replyWithMarkdown
+    ctx.replyWithMarkdownV2 = replyContext.replyWithMarkdownV2
+    ctx.replyWithHTML = replyContext.replyWithHTML
     return next()
   }
 }
