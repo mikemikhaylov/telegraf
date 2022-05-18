@@ -20,6 +20,10 @@ export function deprecate(
   use: string | undefined,
   see?: string
 ) {
+  // don't use deprecate() yet
+  // wait for a couple minor releases of telegraf so the news reaches more people
+  return
+
   const ignorer = `IGNORE_DEPRECATED_${ignorable}`
   if (env[ignorer]) return
 
