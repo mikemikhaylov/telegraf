@@ -1,4 +1,3 @@
-import { assert } from './util'
 import Context from './context'
 import { Middleware } from './middleware'
 
@@ -9,7 +8,7 @@ function makeReply<
   E extends { reply_to_message_id?: number }
 >(ctx: C, extra?: E) {
   const reply_to_message_id = ctx.message?.message_id
-  return { reply_to_message_id, ... extra }
+  return { reply_to_message_id, ...extra }
 }
 
 const replyContext: ReplyContext = {
@@ -18,24 +17,24 @@ const replyContext: ReplyContext = {
       'ctx.replyWithChatAction is removed, use sendChatAction instead'
     )
   },
-  reply(text, extra) {
-    assert(this, 'chat', 'reply')
+  reply(this: Context, text, extra) {
+    this.assert(this.chat, 'reply')
     return this.telegram.sendMessage(this.chat.id, text, makeReply(this, extra))
   },
-  replyWithAnimation(animation, extra) {
-    assert(this, 'chat', 'replyWithAnimation')
+  replyWithAnimation(this: Context, animation, extra) {
+    this.assert(this.chat, 'replyWithAnimation')
     return this.telegram.sendAnimation(
       this.chat.id,
       animation,
       makeReply(this, extra)
     )
   },
-  replyWithAudio(audio, extra) {
-    assert(this, 'chat', 'replyWithAudio')
+  replyWithAudio(this: Context, audio, extra) {
+    this.assert(this.chat, 'replyWithAudio')
     return this.telegram.sendAudio(this.chat.id, audio, makeReply(this, extra))
   },
-  replyWithContact(phoneNumber, firstName, extra) {
-    assert(this, 'chat', 'replyWithContact')
+  replyWithContact(this: Context, phoneNumber, firstName, extra) {
+    this.assert(this.chat, 'replyWithContact')
     return this.telegram.sendContact(
       this.chat.id,
       phoneNumber,
@@ -43,44 +42,44 @@ const replyContext: ReplyContext = {
       makeReply(this, extra)
     )
   },
-  replyWithDice(extra) {
-    assert(this, 'chat', 'replyWithDice')
+  replyWithDice(this: Context, extra) {
+    this.assert(this.chat, 'replyWithDice')
     return this.telegram.sendDice(this.chat.id, makeReply(this, extra))
   },
-  replyWithDocument(document, extra) {
-    assert(this, 'chat', 'replyWithDocument')
+  replyWithDocument(this: Context, document, extra) {
+    this.assert(this.chat, 'replyWithDocument')
     return this.telegram.sendDocument(
       this.chat.id,
       document,
       makeReply(this, extra)
     )
   },
-  replyWithGame(gameName, extra) {
-    assert(this, 'chat', 'replyWithGame')
+  replyWithGame(this: Context, gameName, extra) {
+    this.assert(this.chat, 'replyWithGame')
     return this.telegram.sendGame(
       this.chat.id,
       gameName,
       makeReply(this, extra)
     )
   },
-  replyWithHTML(html, extra) {
-    assert(this, 'chat', 'replyWithHTML')
+  replyWithHTML(this: Context, html, extra) {
+    this.assert(this.chat, 'replyWithHTML')
     return this.telegram.sendMessage(this.chat.id, html, {
       parse_mode: 'HTML',
       reply_to_message_id: this.message?.message_id,
       ...extra,
     })
   },
-  replyWithInvoice(invoice, extra) {
-    assert(this, 'chat', 'replyWithInvoice')
+  replyWithInvoice(this: Context, invoice, extra) {
+    this.assert(this.chat, 'replyWithInvoice')
     return this.telegram.sendInvoice(
       this.chat.id,
       invoice,
       makeReply(this, extra)
     )
   },
-  replyWithLocation(latitude, longitude, extra) {
-    assert(this, 'chat', 'replyWithLocation')
+  replyWithLocation(this: Context, latitude, longitude, extra) {
+    this.assert(this.chat, 'replyWithLocation')
     return this.telegram.sendLocation(
       this.chat.id,
       latitude,
@@ -88,36 +87,36 @@ const replyContext: ReplyContext = {
       makeReply(this, extra)
     )
   },
-  replyWithMarkdown(markdown, extra) {
-    assert(this, 'chat', 'replyWithMarkdown')
+  replyWithMarkdown(this: Context, markdown, extra) {
+    this.assert(this.chat, 'replyWithMarkdown')
     return this.telegram.sendMessage(this.chat.id, markdown, {
       parse_mode: 'Markdown',
       reply_to_message_id: this.message?.message_id,
       ...extra,
     })
   },
-  replyWithMarkdownV2(markdown, extra) {
-    assert(this, 'chat', 'replyWithMarkdownV2')
+  replyWithMarkdownV2(this: Context, markdown, extra) {
+    this.assert(this.chat, 'replyWithMarkdownV2')
     return this.telegram.sendMessage(this.chat.id, markdown, {
       parse_mode: 'MarkdownV2',
       reply_to_message_id: this.message?.message_id,
       ...extra,
     })
   },
-  replyWithMediaGroup(media, extra) {
-    assert(this, 'chat', 'replyWithMediaGroup')
+  replyWithMediaGroup(this: Context, media, extra) {
+    this.assert(this.chat, 'replyWithMediaGroup')
     return this.telegram.sendMediaGroup(
       this.chat.id,
       media,
       makeReply(this, extra)
     )
   },
-  replyWithPhoto(photo, extra) {
-    assert(this, 'chat', 'replyWithPhoto')
+  replyWithPhoto(this: Context, photo, extra) {
+    this.assert(this.chat, 'replyWithPhoto')
     return this.telegram.sendPhoto(this.chat.id, photo, makeReply(this, extra))
   },
-  replyWithPoll(question, options, extra) {
-    assert(this, 'chat', 'replyWithPoll')
+  replyWithPoll(this: Context, question, options, extra) {
+    this.assert(this.chat, 'replyWithPoll')
     return this.telegram.sendPoll(
       this.chat.id,
       question,
@@ -125,8 +124,8 @@ const replyContext: ReplyContext = {
       makeReply(this, extra)
     )
   },
-  replyWithQuiz(question, options, extra) {
-    assert(this, 'chat', 'replyWithQuiz')
+  replyWithQuiz(this: Context, question, options, extra) {
+    this.assert(this.chat, 'replyWithQuiz')
     return this.telegram.sendQuiz(
       this.chat.id,
       question,
@@ -134,16 +133,16 @@ const replyContext: ReplyContext = {
       makeReply(this, extra)
     )
   },
-  replyWithSticker(sticker, extra) {
-    assert(this, 'chat', 'replyWithSticker')
+  replyWithSticker(this: Context, sticker, extra) {
+    this.assert(this.chat, 'replyWithSticker')
     return this.telegram.sendSticker(
       this.chat.id,
       sticker,
       makeReply(this, extra)
     )
   },
-  replyWithVenue(latitude, longitude, title, address, extra) {
-    assert(this, 'chat', 'replyWithVenue')
+  replyWithVenue(this: Context, latitude, longitude, title, address, extra) {
+    this.assert(this.chat, 'replyWithVenue')
     return this.telegram.sendVenue(
       this.chat.id,
       latitude,
@@ -153,20 +152,20 @@ const replyContext: ReplyContext = {
       makeReply(this, extra)
     )
   },
-  replyWithVideo(video, extra) {
-    assert(this, 'chat', 'replyWithVideo')
+  replyWithVideo(this: Context, video, extra) {
+    this.assert(this.chat, 'replyWithVideo')
     return this.telegram.sendVideo(this.chat.id, video, makeReply(this, extra))
   },
-  replyWithVideoNote(videoNote, extra) {
-    assert(this, 'chat', 'replyWithVideoNote')
+  replyWithVideoNote(this: Context, videoNote, extra) {
+    this.assert(this.chat, 'replyWithVideoNote')
     return this.telegram.sendVideoNote(
       this.chat.id,
       videoNote,
       makeReply(this, extra)
     )
   },
-  replyWithVoice(voice, extra) {
-    assert(this, 'chat', 'replyWithVoice')
+  replyWithVoice(this: Context, voice, extra) {
+    this.assert(this.chat, 'replyWithVoice')
     return this.telegram.sendVoice(this.chat.id, voice, makeReply(this, extra))
   },
 }

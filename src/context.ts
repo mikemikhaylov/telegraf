@@ -174,7 +174,10 @@ export class Context<U extends Deunionize<tg.Update> = tg.Update> {
     this.telegram.webhookReply = enable
   }
 
-  private assert<T extends string | object>(
+  /**
+   * @internal
+   */
+  assert<T extends string | object>(
     value: T | undefined,
     method: string
   ): asserts value is T {
