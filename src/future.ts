@@ -8,9 +8,8 @@ function makeReply<
   C extends Context,
   E extends { reply_to_message_id?: number }
 >(ctx: C, extra?: E) {
-  const ret = extra || ({} as E)
-  ret.reply_to_message_id = ctx.message?.message_id
-  return ret
+  const reply_to_message_id = ctx.message?.message_id
+  return { reply_to_message_id, ... extra }
 }
 
 const replyContext: ReplyContext = {
