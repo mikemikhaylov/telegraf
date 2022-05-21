@@ -590,7 +590,7 @@ export class Context<U extends Deunionize<tg.Update> = tg.Update> {
    * @see https://core.telegram.org/bots/api#sendphoto
    */
   sendPhoto(this: Context, ...args: Shorthand<'sendPhoto'>) {
-    this.assert(this.chat, 'replyWithPhoto')
+    this.assert(this.chat, 'sendPhoto')
     return this.telegram.sendPhoto(this.chat.id, ...args)
   }
 
@@ -611,7 +611,7 @@ export class Context<U extends Deunionize<tg.Update> = tg.Update> {
    * @see https://core.telegram.org/bots/api#sendmediagroup
    */
   sendMediaGroup(this: Context, ...args: Shorthand<'sendMediaGroup'>) {
-    this.assert(this.chat, 'replyWithMediaGroup')
+    this.assert(this.chat, 'sendMediaGroup')
     return this.telegram.sendMediaGroup(this.chat.id, ...args)
   }
 
@@ -695,7 +695,7 @@ export class Context<U extends Deunionize<tg.Update> = tg.Update> {
    * @see https://core.telegram.org/bots/api#sendsticker
    */
   sendSticker(this: Context, ...args: Shorthand<'sendSticker'>) {
-    this.assert(this.chat, 'replyWithSticker')
+    this.assert(this.chat, 'sendSticker')
     return this.telegram.sendSticker(this.chat.id, ...args)
   }
 
@@ -737,7 +737,7 @@ export class Context<U extends Deunionize<tg.Update> = tg.Update> {
    * @see https://core.telegram.org/bots/api#sendanimation
    */
   sendAnimation(this: Context, ...args: Shorthand<'sendAnimation'>) {
-    this.assert(this.chat, 'replyWithAnimation')
+    this.assert(this.chat, 'sendAnimation')
     return this.telegram.sendAnimation(this.chat.id, ...args)
   }
 
